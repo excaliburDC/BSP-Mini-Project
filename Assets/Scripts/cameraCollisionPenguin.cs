@@ -5,7 +5,7 @@ using UnityEngine;
 public class cameraCollisionPenguin : MonoBehaviour
 {
     public float minDistance = 1.0f;
-    public float maxdistance = 4.0f;
+    public float maxdistance = 7.0f;
     public float smoothing = 10.0f;
     Vector3 dollyDirection;
     public Vector3 dollyDirAdjusted;
