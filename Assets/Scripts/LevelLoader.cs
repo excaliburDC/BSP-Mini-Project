@@ -16,41 +16,53 @@ public class LevelLoader : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-
+   
 
     public void LoadLevel(int sceneIndex)
    {
+        menuScreen.SetActive(false);
+        loadingScreen.SetActive(true);
+
         StartCoroutine(AsynchronousLoading(sceneIndex));
    }
 
    private IEnumerator AsynchronousLoading(int sceneIndex)
    {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
 
         AsyncOperation op = SceneManager.LoadSceneAsync(sceneIndex);
 
-        menuScreen.SetActive(false);
-        loadingScreen.SetActive(true);
+        op.allowSceneActivation = false;
+
+      
+       
+        
         
 
-        while(!op.isDone)
+        while (!op.isDone)
         {
             loadingBar.value = op.progress;
-            Debug.Log(op.progress);
-
+            
+            
             // Check if the load has finished
             if (op.progress >= 0.9f)
             {
-                loadingBar.enabled = false;
+                loadingBar.value = 1f;
+                yield return new WaitForSeconds(1f);
+                loadingBar.gameObject.SetActive(false);
                 //Change the Text to show the Scene is ready
-                loadCompleteText.text = "Press the space bar to continue";
+                loadCompleteText.text = "Press SPACE to continue";
                 //Wait to you press the space key to activate the Scene
+             
                 if (Input.GetKeyDown(KeyCode.Space))
+                {
                     //Activate the Scene
                     op.allowSceneActivation = true;
+                }
             }
+            Debug.Log(op.progress);
 
-            yield return new WaitForSeconds(5f);
+            yield return null;
         }
    }
 }
