@@ -39,7 +39,7 @@ public class project_cameraFollow : MonoBehaviour
         rotY += finalInputX * inputSensitivity * Time.deltaTime;
         rotX += finalInputZ * inputSensitivity * Time.deltaTime;
 
-        rotX = Mathf.Clamp(rotX, -15.717f, clampAngle);
+        rotX = Mathf.Clamp(rotX, -35f, clampAngle);
         Quaternion localRotation = Quaternion.Euler(rotX, rotY, 0.0f);
         transform.rotation = localRotation;
 
