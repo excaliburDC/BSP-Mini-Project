@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: penguinBody
+  m_Name: IceWalls_shaderMaterial
   m_Shader: {fileID: 4800000, guid: badc33ac0b0c5a845a4326cf48952a71, type: 3}
   m_ShaderKeywords: _COLOR_ON _OUTL_ON
   m_LightmapFlags: 5
@@ -35,12 +35,12 @@ Material:
     - _DS: 0
     - _DetailTex: 0
     - _Outl: 1
-    - _Outline: 2.72
+    - _Outline: 7.61
     - _TintColor: 1
     - _TrOp: 0
     - _Trans: 0
     - _VertexColor: 0
     m_Colors:
     - _Asymmetry: {r: 0, g: 0.25, b: 0.5, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0, g: 0.040882874, b: 0.312, a: 1}
+    - _Color: {r: 0.3820755, g: 0.5941989, b: 1, a: 1}
+    - _OutlineColor: {r: 0.084905684, g: 0.084905684, b: 0.084905684, a: 1}
