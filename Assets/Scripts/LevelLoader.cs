@@ -10,13 +10,14 @@ public class LevelLoader : MonoBehaviour
     public GameObject menuScreen;
     public Slider loadingBar;
     public Text loadCompleteText;
+    //public Animation loadingAnim;
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
     }
 
-   
+
 
     public void LoadLevel(int sceneIndex)
    {
@@ -48,7 +49,7 @@ public class LevelLoader : MonoBehaviour
             if (op.progress >= 0.9f)
             {
                 loadingBar.value = 1f;
-                yield return new WaitForSeconds(1f);
+               
                 loadingBar.gameObject.SetActive(false);
                 //Change the Text to show the Scene is ready
                 loadCompleteText.text = "Press SPACE to continue";
@@ -64,5 +65,6 @@ public class LevelLoader : MonoBehaviour
 
             yield return null;
         }
+        
    }
 }
