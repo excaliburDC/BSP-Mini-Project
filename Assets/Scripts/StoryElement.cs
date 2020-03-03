@@ -8,11 +8,13 @@ public class StoryElement : MonoBehaviour
 
     private void Start()
     {
-        TriggerStory();
+        //TriggerStory();
+        Invoke("TriggerStory",1f);
     }
 
     public void TriggerStory()
     {
+
         StoryManager.Instance.StartStory(story);
     }
 }
