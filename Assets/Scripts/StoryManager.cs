@@ -55,6 +55,8 @@ public class StoryManager : SingletonManager<StoryManager>
     private void EndStory()
     {
         Debug.Log("Story over...");
+        LevelLoader.Instance.LoadLevel();
+
     }
 
 

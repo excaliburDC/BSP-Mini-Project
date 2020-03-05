@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LevelLoader : MonoBehaviour
+public class LevelLoader : SingletonManager<LevelLoader>
 {
     public GameObject loadingScreen;
     public GameObject menuScreen;
@@ -24,8 +24,12 @@ public class LevelLoader : MonoBehaviour
 
    public void LoadLevel()
    {
-        menuScreen.SetActive(false);
+        if(menuScreen.activeInHierarchy)
+            menuScreen.SetActive(false);
+
         loadingScreen.SetActive(true);
+        loadCompleteText.text = "";
+        loadingBar.gameObject.SetActive(true);
 
         StartCoroutine(AsynchronousLoading(SceneManager.GetActiveScene().buildIndex+1));
    }
@@ -58,6 +62,10 @@ public class LevelLoader : MonoBehaviour
                     transition.SetTrigger("StartTransition");
 
                     yield return new WaitForSeconds(transitionTime);
+
+                    loadingScreen.SetActive(false);
+
+                    transition.SetTrigger("EndTransition");
 
                     //Activate the Scene
                     op.allowSceneActivation = true;
