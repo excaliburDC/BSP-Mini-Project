@@ -672,7 +672,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 69.1
   orthographic: 0
@@ -1572,7 +1572,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 69.1
   orthographic: 0
@@ -2682,7 +2682,7 @@ MonoBehaviour:
   cameraMoveSpeed: 120
   cameraFollowObj: {fileID: 1638041429}
   clampAngle: 80
-  inputSensitivity: 150
+  inputSensitivity: 50
   cameraObj: {fileID: 936591801}
   playerObj: {fileID: 1206095071}
   camDistX: 0
