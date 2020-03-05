@@ -10,6 +10,9 @@ public class LevelLoader : MonoBehaviour
     public GameObject menuScreen;
     public Slider loadingBar;
     public Text loadCompleteText;
+    public Animator transition;
+    public float transitionTime = 1f;
+
     //public Animation loadingAnim;
 
     private void Awake()
@@ -19,12 +22,12 @@ public class LevelLoader : MonoBehaviour
 
 
 
-    public void LoadLevel(int sceneIndex)
+   public void LoadLevel()
    {
         menuScreen.SetActive(false);
         loadingScreen.SetActive(true);
 
-        StartCoroutine(AsynchronousLoading(sceneIndex));
+        StartCoroutine(AsynchronousLoading(SceneManager.GetActiveScene().buildIndex+1));
    }
 
    private IEnumerator AsynchronousLoading(int sceneIndex)
@@ -34,11 +37,6 @@ public class LevelLoader : MonoBehaviour
         AsyncOperation op = SceneManager.LoadSceneAsync(sceneIndex);
 
         op.allowSceneActivation = false;
-
-      
-       
-        
-        
 
         while (!op.isDone)
         {
@@ -57,8 +55,17 @@ public class LevelLoader : MonoBehaviour
              
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    transition.SetTrigger("StartTransition");
+
+                    yield return new WaitForSeconds(transitionTime);
+
                     //Activate the Scene
                     op.allowSceneActivation = true;
+
+                    
+
+                    
+
                 }
             }
             Debug.Log(op.progress);
