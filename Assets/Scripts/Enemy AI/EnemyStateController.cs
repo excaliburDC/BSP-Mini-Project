@@ -6,11 +6,14 @@ using UnityEngine.AI;
 public class EnemyStateController : MonoBehaviour
 {
     public State currentState;
+    public EnemyStats enemyStats;
     public Transform eyes;
     
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public List<Transform> wayPointsList;
+    [HideInInspector] public Transform chaseTarget;
     [HideInInspector] public int nextWayPoint;
+   
 
     private bool aiActive;
 
@@ -47,7 +50,7 @@ public class EnemyStateController : MonoBehaviour
         if(currentState != null && eyes != null)
         {
             Gizmos.color = currentState.sceneGizmoColor;
-            //Gizmos.DrawWireSphere(eyes.position,);
+            Gizmos.DrawWireSphere(eyes.position, enemyStats.lookSphereCastRadius);
         }
     }
 }
