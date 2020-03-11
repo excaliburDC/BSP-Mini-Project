@@ -6,9 +6,11 @@ using UnityEngine.AI;
 public class EnemyStateController : MonoBehaviour
 {
     public State currentState;
-
+    public Transform eyes;
+    
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public List<Transform> wayPointsList;
+    [HideInInspector] public int nextWayPoint;
 
     private bool aiActive;
 
@@ -37,6 +39,15 @@ public class EnemyStateController : MonoBehaviour
         else
         {
             agent.enabled = false;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if(currentState != null && eyes != null)
+        {
+            Gizmos.color = currentState.sceneGizmoColor;
+            //Gizmos.DrawWireSphere(eyes.position,);
         }
     }
 }

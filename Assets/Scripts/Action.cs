@@ -4,6 +4,6 @@ using UnityEngine;
 
 public abstract class Action : ScriptableObject
 {
-    public abstract void EnemyAction(EnemyStateController state);
+    public abstract void EnemyAction(EnemyStateController controller);
     
 }

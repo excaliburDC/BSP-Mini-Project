@@ -8,12 +8,7 @@ public class GameController : SingletonManager<GameController>
     public List<Transform> wayPoints;
 
 
-    private void Awake()
-    {
-        wayPoints = new List<Transform>();
-        stateController = GetComponent<EnemyStateController>();
-    }
-
+  
     // Start is called before the first frame update
     void Start()
     {

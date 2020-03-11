@@ -7,6 +7,7 @@ public class State : ScriptableObject
 {
 
     public List<Action> actions = new List<Action>();
+    public Color sceneGizmoColor = Color.grey;
 
     public void UpdateState(EnemyStateController controller)
     {
