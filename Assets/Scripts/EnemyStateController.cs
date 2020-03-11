@@ -1,18 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyStateController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public State currentState;
+
+    [HideInInspector] public NavMeshAgent agent;
+    [HideInInspector] public List<Transform> wayPointsList;
+
+    private bool aiActive;
+
+    private void Awake()
     {
-        
+        agent = GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (!aiActive)
+            return;
+
+        currentState.UpdateState(this);
+    }
+
+    public void SetupAI(bool activateAI,List<Transform> wayPoints)
+    {
+        wayPointsList = wayPoints;
+        aiActive = activateAI;
+
+        if(aiActive)
+        {
+            agent.enabled = true;
+        }
+        else
+        {
+            agent.enabled = false;
+        }
     }
 }
