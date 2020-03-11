@@ -8,6 +8,7 @@ public class EnemyStateController : MonoBehaviour
     public State currentState;
     public EnemyStats enemyStats;
     public Transform eyes;
+    public State remainingState;
     
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public List<Transform> wayPointsList;
@@ -45,6 +46,14 @@ public class EnemyStateController : MonoBehaviour
         }
     }
 
+    public void TransitionToState(State nextState)
+    {
+        if(nextState!=remainingState)
+        {
+            currentState = nextState;
+        }
+    }
+
     private void OnDrawGizmos()
     {
         if(currentState != null && eyes != null)
@@ -53,4 +62,6 @@ public class EnemyStateController : MonoBehaviour
             Gizmos.DrawWireSphere(eyes.position, enemyStats.lookSphereCastRadius);
         }
     }
+
+
 }
