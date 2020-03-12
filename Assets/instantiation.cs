@@ -28,7 +28,8 @@ public class instantiation : MonoBehaviour
     public void FixedUpdate()
     {
         // transform.Translate(Vector3.MoveTowards(transform.position, listUpdater.hitPoint, 500f) * ballSpeed * Time.deltaTime, Space.World);
-        rb.AddForce((listUpdater.spawnBalls.transform.position + listUpdater.hitPoint) * ballSpeed* Time.fixedDeltaTime); ;
+        rb.AddForce(listUpdater.cam.transform.forward * ballSpeed * Time.fixedDeltaTime, ForceMode.Impulse);
+       // rb.AddForce(Vector3.MoveTowards(listUpdater.spawnBalls.transform.position, listUpdater.hitPoint, 2000f) * ballSpeed* Time.fixedDeltaTime); 
     }
     public void LateUpdate()
     {
