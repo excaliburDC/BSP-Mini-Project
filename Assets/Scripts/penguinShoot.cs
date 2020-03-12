@@ -4,10 +4,30 @@ using UnityEngine;
 
 public class penguinShoot : MonoBehaviour
 {
+    public GameObject cam;
     public GameObject spawnBalls;
     public GameObject ballPrefab;
     public Queue<GameObject> ballList = new Queue<GameObject>();
-   
+    RaycastHit hit, getPoint;
+    public Vector3 hitPoint;
+    
+
+    public void Update()
+    {
+        //SnowBalls
+
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            var spawned = ballList.Dequeue();
+            spawned.transform.position = spawnBalls.transform.position;
+            spawned.SetActive(true);
+            shootBalls();
+           // Invoke("shootBalls", 1f);
+        }
+       
+    }
+    //Object Pooling
     private void createObjects()
     {
         for(int i = 0; i<10; i++)
@@ -28,14 +48,21 @@ public class penguinShoot : MonoBehaviour
         newObj.SetActive(false);
             ballList.Enqueue(newObj);
     }
-
-    public void Update()
+    //snowShoot
+    public void shootBalls()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        Vector3 camPos = cam.transform.position;
+        camPos.y = camPos.y + 50.0f;
+        if(Physics.Raycast(camPos, cam.transform.forward, out getPoint, 1000.0f))
+        hitPoint =  getPoint.point;
+
+        if(Physics.Raycast(spawnBalls.transform.position, hitPoint , out hit, 1000.0f ))
         {
-            var spawned = ballList.Dequeue();
-            spawned.transform.position = spawnBalls.transform.position;
-            spawned.SetActive(true);
+            Debug.Log(hit.transform.name);
+            Debug.DrawRay(spawnBalls.transform.position, cam.transform.forward,Color.black);
         }
+
     }
+
+   
 }
