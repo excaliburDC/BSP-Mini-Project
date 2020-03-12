@@ -14,6 +14,7 @@ public class EnemyStateController : MonoBehaviour
     [HideInInspector] public List<Transform> wayPointsList;
     [HideInInspector] public Transform chaseTarget;
     [HideInInspector] public int nextWayPoint;
+    [HideInInspector] public float stateTimeElapsed;
    
 
     private bool aiActive;
@@ -51,7 +52,19 @@ public class EnemyStateController : MonoBehaviour
         if(nextState!=remainingState)
         {
             currentState = nextState;
+            OnExitState();
         }
+    }
+
+    public bool CheckIfTimeElapsed(float duration)
+    {
+        stateTimeElapsed += Time.deltaTime;
+        return (stateTimeElapsed >= duration);
+    }
+
+    public void OnExitState()
+    {
+        stateTimeElapsed = 0;
     }
 
     private void OnDrawGizmos()

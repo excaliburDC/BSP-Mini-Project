@@ -32,6 +32,7 @@ public class LevelLoader : SingletonManager<LevelLoader>
         loadingBar.gameObject.SetActive(true);
 
         StartCoroutine(AsynchronousLoading(SceneManager.GetActiveScene().buildIndex+1));
+        
    }
 
    private IEnumerator AsynchronousLoading(int sceneIndex)
