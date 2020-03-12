@@ -19,10 +19,11 @@ public class penguinShoot : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            shootBalls();
             var spawned = ballList.Dequeue();
             spawned.transform.position = spawnBalls.transform.position;
             spawned.SetActive(true);
-            shootBalls();
+            
            // Invoke("shootBalls", 1f);
         }
        
