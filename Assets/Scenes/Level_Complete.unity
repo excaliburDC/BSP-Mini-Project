@@ -398,7 +398,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: LEVEL COMPLETE
+  m_Text: LEVEL COMPLETED
 --- !u!224 &3457735885356958405
 RectTransform:
   m_ObjectHideFlags: 0
