@@ -149,7 +149,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc1df96421ca5844b9e5ac9dc9daa2ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: MenuSound
+    clip: {fileID: 8300000, guid: 07f7b00c231719642a63212efce479ba, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    audioSource: {fileID: 0}
+  delay: 1
 --- !u!4 &306314943
 Transform:
   m_ObjectHideFlags: 0

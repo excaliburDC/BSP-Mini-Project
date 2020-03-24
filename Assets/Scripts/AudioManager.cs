@@ -7,6 +7,8 @@ public class AudioManager : SingletonManager<AudioManager>
 {
     public List<Sounds> sounds;
 
+    [SerializeField] private float delay = 1f;
+
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -24,11 +26,47 @@ public class AudioManager : SingletonManager<AudioManager>
     // Start is called before the first frame update
     void Start()
     {
-        
+        Play("MenuSound");
     }
 
     public void Play(string name)
     {
+        Sounds s = sounds.Find(sound => sound.name == name);
+        if(s==null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found..!!!");
+            return;
+
+        }
+        s.audioSource.Play();
+    }
+
+    public void Pause(string name)
+    {
+        Sounds s = sounds.Find(sound => sound.name == name);
+
+        if(s.audioSource.isPlaying)
+        {
+            StartCoroutine(FadeSound(s));
         
+        }
+    }
+
+    IEnumerator FadeSound(Sounds currentSound)
+    {
+        float elapsedTime = 0;
+        float currentVolume = currentSound.audioSource.volume;
+        while(elapsedTime<delay)
+        {
+            elapsedTime += Time.deltaTime;
+            currentSound.audioSource.volume = Mathf.Lerp(currentVolume, 0f, elapsedTime / delay);
+
+            if (currentSound.audioSource.volume <= 0f)
+                currentSound.audioSource.Pause();
+
+
+            yield return null;
+
+        }
     }
 }

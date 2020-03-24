@@ -27,6 +27,7 @@ public class LevelLoader : SingletonManager<LevelLoader>
         if(menuScreen.activeInHierarchy)
             menuScreen.SetActive(false);
 
+        AudioManager.Instance.Pause("MenuSound");
         loadingScreen.SetActive(true);
         loadCompleteText.text = "";
         loadingBar.gameObject.SetActive(true);
