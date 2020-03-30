@@ -56,6 +56,7 @@ public class StoryManager : SingletonManager<StoryManager>
     {
         Debug.Log("Story over...");
         LevelLoader.Instance.LoadLevel();
+        GameController.Instance.isMainLevel = true;
 
     }
 
