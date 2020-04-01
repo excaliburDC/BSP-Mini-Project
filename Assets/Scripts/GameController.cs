@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameController : SingletonManager<GameController>
 {
-    public EnemyStateController stateController;
+    public List<EnemyStateController> stateController;
     public List<Transform> wayPoints;
     public int maxHealth = 100;
     public int currentHealth;
@@ -25,7 +25,10 @@ public class GameController : SingletonManager<GameController>
         SetMaxHealth();
         
         
-        stateController.SetupAI(true, wayPoints);
+        stateController[0].SetupAI(true, wayPoints);
+        stateController[1].SetupAI(true, wayPoints);
+        stateController[2].SetupAI(true, wayPoints);
+        stateController[3].SetupAI(true, wayPoints);
     }
 
     private void Update()
@@ -51,6 +54,7 @@ public class GameController : SingletonManager<GameController>
     public void GiveDamage(int damage)
     {
         currentEnemyHealth -= damage;
+        Debug.Log("Health: " + currentEnemyHealth);
         if (currentEnemyHealth <= 0)
             Destroy(gameObject);
     }

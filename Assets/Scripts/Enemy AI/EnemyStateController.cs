@@ -10,11 +10,14 @@ public class EnemyStateController : MonoBehaviour
     public Transform eyes;
     public State remainingState;
     
+    
     [HideInInspector] public NavMeshAgent agent;
+    [HideInInspector] public Animator enemyAnim;
     [HideInInspector] public List<Transform> wayPointsList;
     [HideInInspector] public Transform chaseTarget;
     [HideInInspector] public int nextWayPoint;
     [HideInInspector] public float stateTimeElapsed;
+
    
 
     private bool aiActive;
@@ -22,6 +25,7 @@ public class EnemyStateController : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        enemyAnim = GetComponent<Animator>();
     }
 
     private void Update()

@@ -10,6 +10,8 @@ public class penguinShoot : MonoBehaviour
     public Queue<GameObject> ballList = new Queue<GameObject>();
     RaycastHit hit, getPoint;
     public Vector3 hitPoint;
+
+    public int playerattackDamage = 50;
     
 
     public void Update()
@@ -61,6 +63,12 @@ public class penguinShoot : MonoBehaviour
         {
             Debug.Log(hit.transform.name);
             Debug.DrawRay(spawnBalls.transform.position, cam.transform.forward,Color.black);
+
+            //check if the ball hit the enemy
+            if(hit.collider.CompareTag("Enemy"))
+            {
+                GameController.Instance.GiveDamage(playerattackDamage);
+            }
         }
 
     }

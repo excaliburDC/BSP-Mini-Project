@@ -22,6 +22,7 @@ public class AttackAction : Action
             if(controller.CheckIfTimeElapsed(controller.enemyStats.attackRate))
             {
                 Debug.Log("Enemy Attacks...");
+                controller.enemyAnim.SetTrigger("Attack");
                 GameController.Instance.TakeDamage(controller.enemyStats.attackDamage);
             }
         }
