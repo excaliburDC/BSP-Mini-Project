@@ -10,6 +10,7 @@ public class penguinShoot : MonoBehaviour
     public Queue<GameObject> ballList = new Queue<GameObject>();
     RaycastHit hit, getPoint;
     public Vector3 hitPoint;
+   
 
     public int playerattackDamage = 50;
     
@@ -68,6 +69,8 @@ public class penguinShoot : MonoBehaviour
             if(hit.collider.CompareTag("Enemy"))
             {
                 GameController.Instance.GiveDamage(playerattackDamage);
+                if (GameController.Instance.currentEnemyHealth <= 0)
+                    Destroy(hit.collider.gameObject);
             }
         }
 
