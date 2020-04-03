@@ -13,6 +13,7 @@ public class ChaseAction : Action
     private void Chase(EnemyStateController controller)
     {
         controller.agent.destination = controller.chaseTarget.position;
+        controller.enemyAnim.SetTrigger("Run");
         controller.agent.isStopped = false;
     }
 }

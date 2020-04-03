@@ -12,6 +12,7 @@ public class PatrolAction : Action
 
     private void Patrol(EnemyStateController controller)
     {
+       // controller.enemyAnim.SetTrigger("Walk");
         controller.agent.destination = controller.wayPointsList[controller.nextWayPoint].position;
         controller.agent.isStopped = false;
 

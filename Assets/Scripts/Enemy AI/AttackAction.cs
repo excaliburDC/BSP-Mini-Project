@@ -19,11 +19,14 @@ public class AttackAction : Action
         if (Physics.SphereCast(controller.eyes.position, controller.enemyStats.lookSphereCastRadius, controller.eyes.forward,
            out hit, controller.enemyStats.attackRange) && hit.collider.CompareTag("Player")) 
         {
+           // controller.enemyAnim.SetTrigger("Attack");
             if(controller.CheckIfTimeElapsed(controller.enemyStats.attackRate))
             {
                 Debug.Log("Enemy Attacks...");
                 controller.enemyAnim.SetTrigger("Attack");
                 GameController.Instance.TakeDamage(controller.enemyStats.attackDamage);
+                if (GameController.Instance.currentHealth <= 0)
+                    controller.enemyAnim.SetTrigger("Walk");
             }
         }
     }
