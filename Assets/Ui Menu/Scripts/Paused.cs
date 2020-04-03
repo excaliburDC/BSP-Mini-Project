@@ -36,9 +36,10 @@ public class Paused : MonoBehaviour
     {
         
         pauseAnim.SetBool("Open", false);
+        Time.timeScale = 1f;
         AudioManager.Instance.Resume("GameSound");
         //pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
+        
         GameController.isGamePaused = false;
     }
 
@@ -46,8 +47,8 @@ public class Paused : MonoBehaviour
     {
         pauseMenu.SetActive(true);
         pauseAnim.SetBool("Open", true);
-        AudioManager.Instance.Pause("GameSound");
         Time.timeScale = 0f;
+        AudioManager.Instance.Pause("GameSound");
         GameController.isGamePaused = true;
     }
 
