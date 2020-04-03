@@ -13,6 +13,7 @@ public class LevelLoader : SingletonManager<LevelLoader>
     public Text loadCompleteText;
     public Animator transition;
     public float transitionTime = 1f;
+    public static bool isLevelComplete = false;
 
     //public Animation loadingAnim;
 
@@ -28,12 +29,15 @@ public class LevelLoader : SingletonManager<LevelLoader>
         if(menuScreen.activeInHierarchy)
             menuScreen.SetActive(false);
 
-        AudioManager.Instance.Pause("MenuSound");
+        AudioManager.Instance.FadePause("MenuSound");
         loadingScreen.SetActive(true);
         loadCompleteText.text = "";
         loadingBar.gameObject.SetActive(true);
 
         StartCoroutine(AsynchronousLoading(SceneManager.GetActiveScene().buildIndex+1));
+
+       
+        
 
        
         
@@ -49,6 +53,16 @@ public class LevelLoader : SingletonManager<LevelLoader>
 
         if (!menuScreen.activeInHierarchy)
             menuScreen.SetActive(true);
+    }
+
+    public void LevelComplete()
+    {
+        AudioManager.Instance.Stop("GameSound");
+        isLevelComplete = true;
+        levelCompleteUI.SetActive(true);
+        AudioManager.Instance.Play("LevelComplete");
+        Time.timeScale = 0f;
+        
     }
 
    private IEnumerator AsynchronousLoading(int sceneIndex)

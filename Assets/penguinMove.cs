@@ -35,6 +35,15 @@ public class penguinMove : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider col)
+    {
+        if(col.gameObject.tag=="ExitGate")
+        {
+            Debug.Log("LevelComplete");
+            LevelLoader.Instance.LevelComplete();
+        }
+    }
+
     // private Rigidbody rb;
     // public float movementSpeed = 7.0f;
     // private Vector3 movementInput;

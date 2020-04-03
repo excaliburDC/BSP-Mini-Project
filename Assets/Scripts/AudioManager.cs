@@ -41,7 +41,7 @@ public class AudioManager : SingletonManager<AudioManager>
         s.audioSource.Play();
     }
 
-    public void Pause(string name)
+    public void FadePause(string name)
     {
         Sounds s = sounds.Find(sound => sound.name == name);
 
@@ -49,6 +49,39 @@ public class AudioManager : SingletonManager<AudioManager>
         {
             StartCoroutine(FadeSound(s));
         
+        }
+    }
+
+    public void Pause(string name)
+    {
+        Sounds s = sounds.Find(sound => sound.name == name);
+
+        if (s.audioSource.isPlaying)
+        {
+            s.audioSource.Pause();
+
+        }
+    }
+
+    public void Stop(string name)
+    {
+        Sounds s = sounds.Find(sound => sound.name == name);
+
+        if (s.audioSource.isPlaying)
+        {
+            s.audioSource.Stop();
+
+        }
+    }
+
+    public void Resume(string name)
+    {
+        Sounds s = sounds.Find(sound => sound.name == name);
+
+        if (!s.audioSource.isPlaying)
+        {
+            s.audioSource.UnPause();
+
         }
     }
 
