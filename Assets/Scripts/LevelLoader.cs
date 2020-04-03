@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class LevelLoader : SingletonManager<LevelLoader>
 {
     public GameObject loadingScreen;
+    public GameObject levelCompleteUI;
     public GameObject menuScreen;
     public Slider loadingBar;
     public Text loadCompleteText;
@@ -37,6 +38,18 @@ public class LevelLoader : SingletonManager<LevelLoader>
        
         
    }
+
+    public void LoadPreviousLevel()
+    {
+        loadingScreen.SetActive(true);
+        loadCompleteText.text = "";
+        loadingBar.gameObject.SetActive(true);
+
+        StartCoroutine(AsynchronousLoading(0));
+
+        if (!menuScreen.activeInHierarchy)
+            menuScreen.SetActive(true);
+    }
 
    private IEnumerator AsynchronousLoading(int sceneIndex)
    {
