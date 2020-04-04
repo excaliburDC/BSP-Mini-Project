@@ -14,6 +14,7 @@ public class StoryManager : SingletonManager<StoryManager>
     void Start()
     {
         sentences = new Queue<string>();
+        
     }
 
     public void StartStory(Story story)
