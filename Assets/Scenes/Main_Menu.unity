@@ -6326,6 +6326,30 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5356563388309477252, guid: 36345298105bc3a4090597462ae1d4a8,
+        type: 3}
+      propertyPath: m_Text
+      value: "\t\n\n\n\n\n\n\n\n\n\n\n\n\nMenu System\nReegan Roy & Deepprattin\n\nEnemy
+        AI\nDeeppratim\n\nSound Scheme\nHarinath and Deeppratin\n\nLevel Design\nHarinath\n\nPlayer
+        Movements & Graphics\nStephen Jacob\n\n                         3D\n\nCharacter
+        Design\nSamuel Jacob\n\nPenguin Model\nAmit Bhandari\n\n Environment Modelling\nSamuel
+        Jacob\n\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356563388309477252, guid: 36345298105bc3a4090597462ae1d4a8,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356563388309477252, guid: 36345298105bc3a4090597462ae1d4a8,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356563388309477252, guid: 36345298105bc3a4090597462ae1d4a8,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 5356563388320383624, guid: 36345298105bc3a4090597462ae1d4a8,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.r

@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001fc9c4f722ad44bbcbcc7d6f9faaed, type: 3}
   m_Name: EndStory
   m_EditorClassIdentifier: 
-  sentences: []
+  sentences:
+  - Pengi escapes the maze and finds an Expedition Base  . . . and that's where his
+    parents are trapped.
+  - '"I will find the key and set my parens free of the cage", said Pengi.'
+  - 'Little penguin leaves for the base.
+
+    The story continues . . .'
