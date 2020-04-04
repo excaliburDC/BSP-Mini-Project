@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : SingletonManager<GameController>
 {
@@ -11,9 +12,12 @@ public class GameController : SingletonManager<GameController>
     public int currentHealth;
     public int currentEnemyHealth;
     public GameObject enemyHealthBar;
+    public GameObject gameOverMenu;
+    public GameObject minimap;
     public Slider playerHealthSlider;
     public bool isMainLevel = true;
     public static bool isGamePaused = false;
+    public static bool isGameOver = false;
 
 
     public Slider enemyHealthSlider;
@@ -23,6 +27,9 @@ public class GameController : SingletonManager<GameController>
     // Start is called before the first frame update
     void Start()
     {
+        gameOverMenu.SetActive(false);
+        minimap.SetActive(true);
+        playerHealthSlider.gameObject.SetActive(true);
         AudioManager.Instance.Play("GameSound");
         enemyHealthSlider = enemyHealthBar.GetComponentInChildren<Slider>();
         currentHealth = maxHealth;
@@ -74,10 +81,32 @@ public class GameController : SingletonManager<GameController>
     {
         currentHealth -= damage;
         if (currentHealth < 0)
+        {
             currentHealth = 0;
+            Die();
+        }
+            
         SetHealth(currentHealth);
 
+
     }
+
+    public void RestartLevel()
+    {
+        SceneManager.GetActiveScene();
+    }
+
+    void Die()
+    {
+        AudioManager.Instance.Stop("GameSound");
+        isGameOver = true;
+        minimap.SetActive(false);
+        playerHealthSlider.gameObject.SetActive(false);
+        AudioManager.Instance.Play("GameOver");
+        gameOverMenu.SetActive(true);
+    }
+
+    
 
     
 }
