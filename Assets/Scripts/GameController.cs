@@ -43,13 +43,7 @@ public class GameController : SingletonManager<GameController>
         stateController[3].SetupAI(true, wayPoints);
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(25);
-        }
-    }
+   
 
     public void SetMaxHealth()
     {
@@ -70,7 +64,7 @@ public class GameController : SingletonManager<GameController>
     {
         currentEnemyHealth -= damage;
        
-        if (currentEnemyHealth < 0)
+        if (currentEnemyHealth <= 0)
             currentEnemyHealth = 0;
         enemyHealthSlider.value = currentEnemyHealth;
         Debug.Log("Health: " + currentEnemyHealth);
@@ -80,7 +74,7 @@ public class GameController : SingletonManager<GameController>
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
             currentHealth = 0;
             Die();
@@ -93,7 +87,12 @@ public class GameController : SingletonManager<GameController>
 
     public void RestartLevel()
     {
-        SceneManager.GetActiveScene();
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        isGameOver = false;
+        gameOverMenu.SetActive(false);
+        minimap.SetActive(true);
+        playerHealthSlider.gameObject.SetActive(true);
+
     }
 
     void Die()

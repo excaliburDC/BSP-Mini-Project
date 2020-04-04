@@ -29,7 +29,7 @@ public class SearchDecision : AIDecision
 
         else
         {
-            controller.enemyAnim.SetTrigger("Walk");
+            //controller.enemyAnim.SetTrigger("Walk");
             return false;
         }
             

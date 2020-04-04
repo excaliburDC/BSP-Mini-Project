@@ -3459,7 +3459,7 @@ MonoBehaviour:
   enemyHealthBar: {fileID: 4705782410033535686, guid: 3f38fe85beb279145930052c6909ca4f,
     type: 3}
   gameOverMenu: {fileID: 232810472}
-  minimap: {fileID: 0}
+  minimap: {fileID: 3501534351643256409}
   playerHealthSlider: {fileID: 947391587}
   isMainLevel: 1
   enemyHealthSlider: {fileID: 0}
@@ -3476,36 +3476,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1834195160
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1834195161}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1834195161
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1834195160}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -105.31, y: 3.2192194, z: 667.1028}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1905230513
 GameObject:
@@ -4156,6 +4126,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3115a576181ca649827119c30976e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3501534351643256409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8405204262406515301, guid: 9e8e6d5d972d75742acad321054dd8aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 3501534351643256407}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7153613149564874559
 PrefabInstance:
   m_ObjectHideFlags: 0

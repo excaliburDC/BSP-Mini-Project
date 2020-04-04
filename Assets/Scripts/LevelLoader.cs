@@ -94,6 +94,7 @@ public class LevelLoader : SingletonManager<LevelLoader>
         {
             levelCompleteUI.SetActive(false);
             LoadLevel();
+            isLevelComplete = false;
         }
        
     }
