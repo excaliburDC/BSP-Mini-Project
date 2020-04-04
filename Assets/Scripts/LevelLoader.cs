@@ -13,7 +13,14 @@ public class LevelLoader : SingletonManager<LevelLoader>
     public Text loadCompleteText;
     public Animator transition;
     public float transitionTime = 1f;
+
+    
     public static bool isLevelComplete = false;
+    public static bool isMenuLoaded = false;
+
+    private float levelCompleteDuration = 5f;
+    private float timeSinceLevelComplete;
+
 
     //public Animation loadingAnim;
 
@@ -22,9 +29,14 @@ public class LevelLoader : SingletonManager<LevelLoader>
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Update()
+    {
+        
+    }
 
 
-   public void LoadLevel()
+
+    public void LoadLevel()
    {
         if(menuScreen.activeInHierarchy)
             menuScreen.SetActive(false);
@@ -45,14 +57,18 @@ public class LevelLoader : SingletonManager<LevelLoader>
 
     public void LoadPreviousLevel()
     {
-        loadingScreen.SetActive(true);
-        loadCompleteText.text = "";
-        loadingBar.gameObject.SetActive(true);
+        //loadingScreen.SetActive(true);
+        //loadCompleteText.text = "";
+       // loadingBar.gameObject.SetActive(true);
 
-        StartCoroutine(AsynchronousLoading(0));
+        SceneManager.LoadSceneAsync(0);
+        AudioManager.Instance.Play("MenuSound");
 
-        if (!menuScreen.activeInHierarchy)
-            menuScreen.SetActive(true);
+        
+      
+
+
+      
     }
 
     public void LevelComplete()
@@ -61,8 +77,25 @@ public class LevelLoader : SingletonManager<LevelLoader>
         isLevelComplete = true;
         levelCompleteUI.SetActive(true);
         AudioManager.Instance.Play("LevelComplete");
-        Time.timeScale = 0f;
+        StartCoroutine(LevelIsCompleted());
         
+       
+       
+
+
+        //Time.timeScale = 0f;
+
+    }
+
+    private IEnumerator LevelIsCompleted()
+    {
+        yield return new WaitForSeconds(4f);
+        if (isLevelComplete)
+        {
+            levelCompleteUI.SetActive(false);
+            LoadLevel();
+        }
+       
     }
 
    private IEnumerator AsynchronousLoading(int sceneIndex)
@@ -111,6 +144,7 @@ public class LevelLoader : SingletonManager<LevelLoader>
 
             yield return null;
         }
+
         
    }
 }

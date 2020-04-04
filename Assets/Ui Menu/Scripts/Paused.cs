@@ -52,13 +52,12 @@ public class Paused : MonoBehaviour
         GameController.isGamePaused = true;
     }
 
-    public void Settings()
+    public void GoToMainMenu()
     {
         pauseAnim.SetBool("Open", false);
+        pauseMenu.SetActive(false);
+        LevelLoader.Instance.LoadPreviousLevel();
     }
 
-    public void Back()
-    {
-        pauseAnim.SetBool("Open", true);
-    }
+    
 }
